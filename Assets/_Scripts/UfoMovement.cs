@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class UfoMovement : MonoBehaviour
 {
-    private float _speed = 0.5f;
-    private float _extraSpeed = 2.5f;
+    private float _speed = 0.01f;
+    private float _extraSpeed = 2.01f;
 
     private void Start()
     {
@@ -34,12 +34,20 @@ public class UfoMovement : MonoBehaviour
         {
             if (GroundDetector.isGrounded)
             {
-                transform.Translate(Vector2.left * (_speed+1) * Time.deltaTime);
+                transform.Translate(Vector2.left * (_speed + 1f) * Time.deltaTime);
             }
             else
             {
-                transform.Translate(Vector2.left * (_extraSpeed+1) * Time.deltaTime);
+                transform.Translate(Vector2.left * (_extraSpeed + 1f) * Time.deltaTime);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (transform.position.x < -15 || transform.position.x > 15)
+        {
+            Destroy(gameObject);
         }
     }
 }

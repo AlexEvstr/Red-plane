@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 699739717}
   - component: {fileID: 699739716}
   - component: {fileID: 699739718}
+  - component: {fileID: 699739719}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -643,6 +644,21 @@ MonoBehaviour:
   - {fileID: 2298999955891748855, guid: 27150c84c087647c4bbca80dd60891f9, type: 3}
   spawnIntervalMin: 1
   spawnIntervalMax: 4
+--- !u!114 &699739719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699739715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175bbe706686547d886c8361fdf90369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 7461878084213944977, guid: 966eb6166c1c644f0ba595628efe10a9, type: 3}
+  spawnIntervalMin: 1
+  spawnIntervalMax: 10
 --- !u!1 &853252943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1055,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4d442bb8034cc4060891373da557b338, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

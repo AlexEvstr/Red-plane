@@ -5,8 +5,8 @@ using UnityEngine;
 public class UFOSpawner : MonoBehaviour
 {
     public GameObject[] ufoPrefabs; // Массив префабов UFO
-    public float spawnIntervalMin = 2f; // Минимальное время между спавном
-    public float spawnIntervalMax = 6f; // Максимальное время между спавном
+    private float spawnIntervalMin = 3f; // Минимальное время между спавном
+    private float spawnIntervalMax = 6f; // Максимальное время между спавном
 
     void Start()
     {
