@@ -13,32 +13,22 @@ public class AlienMovement : MonoBehaviour
 
     void Start()
     {
-        // Получаем компонент SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Устанавливаем начальное время для смены направления
         SetRandomDirectionTime();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Двигаем бота влево или вправо в зависимости от значения movingLeft
         float moveDirection = movingLeft ? -1f : 1f;
         transform.Translate(Vector2.right * moveDirection * speed * Time.deltaTime);
 
-        // Увеличиваем таймер
         changeDirectionTimer += Time.deltaTime;
 
-        // Проверяем, нужно ли менять направление
         if (changeDirectionTimer >= changeDirectionTime)
         {
-            // Меняем направление движения
             movingLeft = !movingLeft;
-
-            // Обновляем flipX для SpriteRenderer
             spriteRenderer.flipX = !spriteRenderer.flipX;
 
-            // Сбрасываем таймер и устанавливаем новое случайное время для смены направления
             changeDirectionTimer = 0f;
             SetRandomDirectionTime();
         }
