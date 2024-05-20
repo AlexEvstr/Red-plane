@@ -34,11 +34,11 @@ public class UfoMovement : MonoBehaviour
         {
             if (GroundDetector.isGrounded)
             {
-                transform.Translate(Vector2.left * _speed * Time.deltaTime);
+                transform.Translate(Vector2.left * (_speed+1) * Time.deltaTime);
             }
             else
             {
-                transform.Translate(Vector2.left * _extraSpeed * Time.deltaTime);
+                transform.Translate(Vector2.left * (_extraSpeed+1) * Time.deltaTime);
             }
         }
     }
