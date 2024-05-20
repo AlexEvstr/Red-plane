@@ -15,8 +15,11 @@ public class BackgroundMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * _speed);
-        if (transform.position.x < (_zeroPosition.x - _middleOfBackground))
-            transform.position = _zeroPosition;
+        if (!GroundDetector.isGrounded)
+        {
+            transform.Translate(Vector2.left * Time.deltaTime * _speed);
+            if (transform.position.x < (_zeroPosition.x - _middleOfBackground))
+                transform.position = _zeroPosition;
+        }
     }
 }
