@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class ScoreGame : MonoBehaviour
 {
     private float _score = 0f;
+    private float _bestScore;
 
     public TMP_Text _scoreText;
 
@@ -21,6 +20,11 @@ public class ScoreGame : MonoBehaviour
             {
                 _scoreText.text = $"{displayedScore}";
             }
+        }
+        if (_bestScore < _score)
+        {
+            _bestScore = _score;
+            PlayerPrefs.SetFloat("bestScore", _bestScore);
         }
     }
 }
