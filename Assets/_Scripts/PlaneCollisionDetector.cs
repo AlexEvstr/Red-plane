@@ -15,6 +15,8 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverScreen;
 
+    [SerializeField] private GameAudioManager _gameAudioManager;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +30,7 @@ public class PlaneCollisionDetector : MonoBehaviour
             {
                 _jumpButton.SetActive(false);
 
+                _gameAudioManager.DestroySound();
 
                 gameObject.GetComponent<PolygonCollider2D>().enabled = false;
                 Vector2 force = new Vector2(rightwardForce, upwardForce);
@@ -60,6 +63,7 @@ public class PlaneCollisionDetector : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         _gameOverScreen.SetActive(true);
+        _gameAudioManager.GameoverSound();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,6 +71,7 @@ public class PlaneCollisionDetector : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
+            _gameAudioManager.CoinSound();
             CoinsCounter.Coins++;
             PlayerPrefs.SetInt("coins", CoinsCounter.Coins);
         }

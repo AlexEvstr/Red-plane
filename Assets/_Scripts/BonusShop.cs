@@ -18,8 +18,11 @@ public class BonusShop : MonoBehaviour
     [SerializeField] private Button buyShieldButton;
     [SerializeField] private Button buyMagnetButton;
 
+    private MenuAudio _menuAudio;
+
     private void Start()
     {
+        _menuAudio = GetComponent<MenuAudio>();
         coins = PlayerPrefs.GetInt("coins", 0);
         shieldCount = PlayerPrefs.GetInt("shieldCount", 1);
         magnetCount = PlayerPrefs.GetInt("magnetCount", 1);
@@ -47,6 +50,7 @@ public class BonusShop : MonoBehaviour
             coins -= bonusCost;
             shieldCount += 1;
             UpdateUI();
+            _menuAudio.BuyBoostSound();
         }
     }
 
@@ -57,6 +61,7 @@ public class BonusShop : MonoBehaviour
             coins -= bonusCost;
             magnetCount += 1;
             UpdateUI();
+            _menuAudio.BuyBoostSound();
         }
     }
 }

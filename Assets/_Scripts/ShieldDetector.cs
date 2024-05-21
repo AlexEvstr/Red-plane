@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ShieldDetector : MonoBehaviour
 {
+    [SerializeField] GameAudioManager gameAudioManager;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -19,6 +21,9 @@ public class ShieldDetector : MonoBehaviour
         float t = 0f;
         enemy.GetComponent<Collider2D>().enabled = false;
         enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        gameAudioManager.ShieldCollisionSound();
+
         AlienSpawner.currentAlienCount--;
         while (t < duration || enemy != null)
         {
