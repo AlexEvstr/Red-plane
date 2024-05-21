@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _tutorial;
     [SerializeField] private TMP_Text _bestText;
 
     private void Start()
@@ -17,5 +18,15 @@ public class MenuManager : MonoBehaviour
     public void PlayBtn()
     {
         SceneManager.LoadScene("gameScene");
+    }
+
+    public void OpenTutorial()
+    {
+        _tutorial.SetActive(true);
+    }
+
+    public void CloseTutorial()
+    {
+        _tutorial.SetActive(false);
     }
 }
