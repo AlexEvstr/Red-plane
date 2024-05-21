@@ -1,16 +1,35 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameBTNS : MonoBehaviour
 {
     [SerializeField] private GameObject _shield;
     [SerializeField] private GameObject _magnet;
 
+    [SerializeField] private TMP_Text _shieldCountText;
+    [SerializeField] private TMP_Text _magnetCountText;
+
+    private int _shielCount;
+    private int _magnetCount;
+
     [SerializeField] private GameObject _player;
 
     private float magnetForce = 10f;
     private float magnetDuration = 10f;
+
+    private void Start()
+    {
+        _shielCount = PlayerPrefs.GetInt("shieldCount", 1);
+        _magnetCount = PlayerPrefs.GetInt("magnetCount", 1);
+    }
+
+    private void Update()
+    {
+        _shieldCountText.text = _shielCount.ToString();
+        _magnetCountText.text = _magnetCount.ToString();
+    }
 
     public void RestartGame()
     {
@@ -24,7 +43,11 @@ public class GameBTNS : MonoBehaviour
 
     public void ShieldBtn()
     {
-        StartCoroutine(ActivateShield());
+        if (_shielCount > 0)
+        {
+            _shielCount--;
+            StartCoroutine(ActivateShield());
+        }
     }
 
     private IEnumerator ActivateShield()
@@ -39,7 +62,11 @@ public class GameBTNS : MonoBehaviour
 
     public void MagnetBtn()
     {
-        StartCoroutine(ActivateMagnet());
+        if (_magnetCount > 0)
+        {
+            _magnetCount--;
+            StartCoroutine(ActivateMagnet());
+        }
     }
 
     private IEnumerator ActivateMagnet()
