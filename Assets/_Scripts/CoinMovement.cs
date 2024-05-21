@@ -16,5 +16,10 @@ public class CoinMovement : MonoBehaviour
         {
             transform.Translate(Vector2.left * Time.deltaTime * (_speed+3));
         }
+
+        if (transform.position.x < -5)
+        {
+            Destroy(gameObject);
+        }
     }
 }
