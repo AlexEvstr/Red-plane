@@ -19,7 +19,7 @@ public class ScoreGame : MonoBehaviour
 
             if (_scoreText != null)
             {
-                _scoreText.text = $"x{displayedScore}";
+                _scoreText.text = $"{displayedScore}";
             }
         }
     }

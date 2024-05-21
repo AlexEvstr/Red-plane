@@ -16,11 +16,15 @@ public class GameBTNS : MonoBehaviour
 
     [SerializeField] private GameObject _player;
 
+    [SerializeField] private GameObject _pauseScreen;
+    [SerializeField] private GameObject _pauseBtn;
+
     private float magnetForce = 10f;
     private float magnetDuration = 10f;
 
     private void Start()
     {
+        Time.timeScale = 1;
         _shielCount = PlayerPrefs.GetInt("shieldCount", 1);
         _magnetCount = PlayerPrefs.GetInt("magnetCount", 1);
     }
@@ -100,6 +104,20 @@ public class GameBTNS : MonoBehaviour
         {
             coin.GetComponent<CoinMovement>().enabled = true;
         }
+    }
+
+    public void PauseGame()
+    {
+        _pauseScreen.SetActive(true);
+        _pauseBtn.SetActive(false);
+        Time.timeScale = 0;
+    }
+
+    public void ReturnGame()
+    {
+        _pauseScreen.SetActive(false);
+        _pauseBtn.SetActive(true);
+        Time.timeScale = 1;
     }
 
 }
