@@ -16,6 +16,7 @@ public class PlaneCollisionDetector : MonoBehaviour
     [SerializeField] private GameObject _gameOverScreen;
 
     [SerializeField] private GameAudioManager _gameAudioManager;
+    [SerializeField] private GameObject _coinColletEffect;
 
     private void Start()
     {
@@ -70,6 +71,9 @@ public class PlaneCollisionDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
+            GameObject coinEffect = Instantiate(_coinColletEffect);
+            coinEffect.transform.position = collision.transform.position;
+            Destroy(coinEffect, 1f);
             Destroy(collision.gameObject);
             _gameAudioManager.CoinSound();
             CoinsCounter.Coins++;

@@ -6,6 +6,9 @@ public class GroundDetector : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private Transform _camera;
+
+    [SerializeField] private GameObject _groundHit;
+    [SerializeField] private GameAudioManager _gameAudioManager;
     public static bool isGrounded;
 
     // Позиции камеры
@@ -20,6 +23,12 @@ public class GroundDetector : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isGrounded = true;
+
+            _gameAudioManager.GroundHitSound();
+            GameObject groundHit = Instantiate(_groundHit);
+            groundHit.transform.position = new Vector2(collision.gameObject.transform.position.x,
+                                                        collision.gameObject.transform.position.y - 0.3f);
+            Destroy(groundHit, 0.5f);
         }
     }
 

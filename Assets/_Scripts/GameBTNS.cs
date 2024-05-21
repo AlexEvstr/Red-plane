@@ -19,12 +19,15 @@ public class GameBTNS : MonoBehaviour
     [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _pauseBtn;
 
+    private GameAudioManager _gameAudioManager;
+
     private float magnetForce = 10f;
     private float magnetDuration = 10f;
 
     private void Start()
     {
         Time.timeScale = 1;
+        _gameAudioManager = GetComponent<GameAudioManager>();
         _shielCount = PlayerPrefs.GetInt("shieldCount", 1);
         _magnetCount = PlayerPrefs.GetInt("magnetCount", 1);
     }
@@ -49,6 +52,7 @@ public class GameBTNS : MonoBehaviour
     {
         if (_shielCount > 0)
         {
+            _gameAudioManager.BonusSound();
             _shielCount--;
             PlayerPrefs.SetInt("shieldCount", _shielCount);
             StartCoroutine(ActivateShield());
@@ -69,6 +73,7 @@ public class GameBTNS : MonoBehaviour
     {
         if (_magnetCount > 0)
         {
+            _gameAudioManager.BonusSound();
             _magnetCount--;
             PlayerPrefs.SetInt("magnetCount", _magnetCount);
             StartCoroutine(ActivateMagnet());

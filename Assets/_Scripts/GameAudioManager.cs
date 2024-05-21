@@ -12,6 +12,7 @@ public class GameAudioManager : MonoBehaviour
     [SerializeField] private AudioClip _gameoverSound;
     [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip _shieldCollisionSound;
+    [SerializeField] private AudioClip _groundHitSound;
 
     private void Start()
     {
@@ -51,5 +52,10 @@ public class GameAudioManager : MonoBehaviour
     public void ShieldCollisionSound()
     {
         _audioSource.PlayOneShot(_shieldCollisionSound);
+    }
+
+    public void GroundHitSound()
+    {
+        _audioSource.PlayOneShot(_groundHitSound);
     }
 }
