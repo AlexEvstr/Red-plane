@@ -6,10 +6,11 @@ public class AlienSpawner : MonoBehaviour
 {
     public GameObject alienPrefab; // Префаб объекта Alien
     private int maxAliens = 3; // Максимальное количество объектов Alien
-    private int currentAlienCount = 0;
+    public static int currentAlienCount = 0;
 
     void Start()
     {
+        currentAlienCount = 0;
         // Спавн начальных объектов Alien
         for (int i = 0; i < maxAliens; i++)
         {

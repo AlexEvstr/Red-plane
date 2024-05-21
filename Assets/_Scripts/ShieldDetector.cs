@@ -19,15 +19,18 @@ public class ShieldDetector : MonoBehaviour
         float t = 0f;
         enemy.GetComponent<Collider2D>().enabled = false;
         enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        while (t < duration)
+        AlienSpawner.currentAlienCount--;
+        while (t < duration || enemy != null)
         {
             t += Time.deltaTime;
             float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360f;
+
             enemy.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, zRotation);
             yield return null;
         }
-
-        enemy.transform.eulerAngles = new Vector3(enemy.transform.eulerAngles.x, enemy.transform.eulerAngles.y, endRotation % 360f);
+        //Debug.Log("end");
+        //enemy.transform.eulerAngles = new Vector3(enemy.transform.eulerAngles.x, enemy.transform.eulerAngles.y, endRotation % 360f);
+        //Destroy(enemy);
         
     }
 }
