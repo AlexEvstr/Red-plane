@@ -17,6 +17,7 @@ public class PlaneCollisionDetector : MonoBehaviour
 
     [SerializeField] private GameAudioManager _gameAudioManager;
     [SerializeField] private GameObject _coinColletEffect;
+    [SerializeField] private GameObject _hitCollisionEffect;
 
     private void Start()
     {
@@ -30,6 +31,11 @@ public class PlaneCollisionDetector : MonoBehaviour
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 _jumpButton.SetActive(false);
+
+                GameObject hitCollision = Instantiate(_hitCollisionEffect);
+                hitCollision.transform.position = new Vector2((collision.transform.position.x + transform.position.x)/2,
+                                                              (collision.transform.position.y + transform.position.y)/2);
+                Destroy(hitCollision, 1f);
 
                 _gameAudioManager.DestroySound();
 
@@ -72,7 +78,8 @@ public class PlaneCollisionDetector : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             GameObject coinEffect = Instantiate(_coinColletEffect);
-            coinEffect.transform.position = collision.transform.position;
+            coinEffect.transform.position = new Vector2((collision.transform.position.x + transform.position.x)/2,
+                                                        (collision.transform.position.y + transform.position.y) / 2);
             Destroy(coinEffect, 1f);
             Destroy(collision.gameObject);
             _gameAudioManager.CoinSound();

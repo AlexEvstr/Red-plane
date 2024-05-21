@@ -4328,6 +4328,7 @@ MonoBehaviour:
   _gameOverScreen: {fileID: 2017074515}
   _gameAudioManager: {fileID: 699739723}
   _coinColletEffect: {fileID: 468329114087255519, guid: 9df96018bfca943179f451ed2281b58b, type: 3}
+  _hitCollisionEffect: {fileID: 51145630308556893, guid: fb5943082587d493b925eed2915794d1, type: 3}
 --- !u!58 &2026804947
 CircleCollider2D:
   m_ObjectHideFlags: 0
