@@ -28,9 +28,5 @@ public class ShieldDetector : MonoBehaviour
             enemy.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, zRotation);
             yield return null;
         }
-        //Debug.Log("end");
-        //enemy.transform.eulerAngles = new Vector3(enemy.transform.eulerAngles.x, enemy.transform.eulerAngles.y, endRotation % 360f);
-        //Destroy(enemy);
-        
     }
 }

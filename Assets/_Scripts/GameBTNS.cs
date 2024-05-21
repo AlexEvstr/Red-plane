@@ -46,6 +46,7 @@ public class GameBTNS : MonoBehaviour
         if (_shielCount > 0)
         {
             _shielCount--;
+            PlayerPrefs.SetInt("shieldCount", _shielCount);
             StartCoroutine(ActivateShield());
         }
     }
@@ -65,6 +66,7 @@ public class GameBTNS : MonoBehaviour
         if (_magnetCount > 0)
         {
             _magnetCount--;
+            PlayerPrefs.SetInt("magnetCount", _magnetCount);
             StartCoroutine(ActivateMagnet());
         }
     }

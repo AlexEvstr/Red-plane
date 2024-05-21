@@ -68,6 +68,7 @@ public class PlaneCollisionDetector : MonoBehaviour
         {
             Destroy(collision.gameObject);
             CoinsCounter.Coins++;
+            PlayerPrefs.SetInt("coins", CoinsCounter.Coins);
         }
     }
 }
