@@ -10,6 +10,7 @@ public class OnBoard : MonoBehaviour
     [SerializeField] private GameObject _onBoard_1;
     [SerializeField] private GameObject _onBoard_2;
     [SerializeField] private GameObject _onBoard_3;
+    [SerializeField] private GameObject _onBoard_4;
 
     private void Start()
     {
@@ -42,6 +43,12 @@ public class OnBoard : MonoBehaviour
     {
         _onBoard_2.SetActive(false);
         _onBoard_3.SetActive(true);
+    }
+
+    public void Open4()
+    {
+        _onBoard_3.SetActive(false);
+        _onBoard_4.SetActive(true);
     }
 
     public void OpenMenu()
