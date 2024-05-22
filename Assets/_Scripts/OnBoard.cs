@@ -33,15 +33,9 @@ public class OnBoard : MonoBehaviour
         _onBoard_1.SetActive(true);
     }
 
-    public void Open2()
-    {
-        _onBoard_1.SetActive(false);
-        _onBoard_2.SetActive(true);
-    }
-
     public void Open3()
     {
-        _onBoard_2.SetActive(false);
+        _onBoard_1.SetActive(false);
         _onBoard_3.SetActive(true);
     }
 
